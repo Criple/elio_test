@@ -1,0 +1,53 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-4">
+            <form
+                    id="productDetailPageBuyProductForm"
+                    action="{{ path('frontend.fastorder.addtocart') }}"
+                    method="post">
+
+                {% block page_product_detail_buy_form_inner_csrf %}
+                    {{ sw_csrf('frontend.fastorder.addtocart') }}
+                {% endblock %}
+                <input type="hidden" name="redirectTo" value="frontend.cart.offcanvas">
+                {% block page_product_detail_buy_container %}
+
+                    <div class="form-row buy-widget-container">
+                        {% block page_product_buy_container %}
+
+                            <div class="col-8">
+                                <p>Article</p>
+                            </div>
+                            <div class="col-4">
+                                <p>Quantity</p>
+                            </div>
+                            {% for i in 0..9 %}
+                                <div class="col-8">
+                                    <div class="product-action">
+                                        <input type="text" name="productData[{{ i }}][article]" class="form-control" placeholder="Article" />
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="product-action">
+                                        <input type="number" placeholder="Quantity" class="form-control" name="productData[{{ i }}][quantity]" />
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-5 col-md-3">
+            <div class="product-action">
+                <button class="btn btn-block btn-buy" title="Add to shopping cart" form="productDetailPageBuyProductForm">Add to shopping cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

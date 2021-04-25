@@ -1,0 +1,32 @@
+<?php //%255BDockwareSamplePlugin%255CService%255CSampleController%2523fastorderAddToCart%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+    ],
+    null,
+    [
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                '/fastorder/addtocart',
+            ],
+            'name' => [
+                'frontend.fastorder.addtocart',
+            ],
+            'defaults' => [
+                [
+                    'XmlHttpRequest' => true,
+                ],
+            ],
+            'methods' => [
+                [
+                    'POST',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];

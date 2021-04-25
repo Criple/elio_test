@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="DockwareSamplePlugin\Subscriber\Storefront\Subscriber" class="DockwareSamplePlugin\Subscriber\Storefront\Subscriber">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="DockwareSamplePlugin\Storefront\Controller\SampleController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="DockwareSamplePlugin\Service\SampleController" public="true">
+            <argument type="service" id="Shopware\Core\Checkout\Cart\LineItemFactoryRegistry"/>
+            <argument type="service" id="Shopware\Core\Checkout\Cart\SalesChannel\CartService"/>
+            <argument type="service" id="product.repository"/>
+        </service>
+
+        <service id="DockwareSamplePlugin\Extension\Content\Product\DockwareSampleExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <service id="DockwareSamplePlugin\Extension\Content\Product\DockwareSampleDefinition">
+            <tag name="shopware.entity.definition" entity="dockware_fastorder_products" />
+        </service>
+
+    </services>
+</container>
